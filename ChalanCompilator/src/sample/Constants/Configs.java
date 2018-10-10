@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 public final class Configs {
     public static final String Username="";
     public static final String[] KEYWORDS = new String[] {
-            "crear","traer","general","fijo","privado","int","String",
+            "crear","traer","general","fijo","privado","int","String","Double","metodo","arreglo","x","clase"
     };
 
     public static final String KEYWORD_PATTERN = "\\b(" + String.join("|", KEYWORDS) + ")\\b";
