@@ -81,4 +81,7 @@ public final class Configs {
         return spansBuilder.create();
     }
 
+    public static String[] EXPRESIONES={
+           "[A-Za-z]{1,3}"
+    };
 }

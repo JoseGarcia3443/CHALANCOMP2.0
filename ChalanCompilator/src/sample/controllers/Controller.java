@@ -46,4 +46,16 @@ public class Controller extends Application {
     public void start(Stage stage) throws Exception {
         this.stage=stage;
     }
+
+    public void ejecutar(ActionEvent evt){
+
+    }
+
+    public void compilar(){
+        String texto = codeArea.getText();
+        String[] renglones=texto.split("\\n");
+        for(int x=0;x<renglones.length;x++){
+            
+        }
+    }
 }
