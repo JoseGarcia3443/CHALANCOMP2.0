@@ -3,21 +3,34 @@ package sample.controllers;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.fxmisc.richtext.CodeArea;
 import org.fxmisc.richtext.LineNumberFactory;
 import org.reactfx.Subscription;
+import sample.Constants.Configs;
+
+import java.awt.*;
 import java.io.File;
 import java.time.Duration;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static sample.Constants.Configs.computeHighlighting;
 import static sample.Constants.Configs.sampleCode;
 
 public class Controller extends Application {
     private Stage stage;
-    @FXML private Pane panesote;
 
+    @FXML
+    TextArea txtConsola;
+
+    @FXML
+    HBox panesote;
 
     CodeArea codeArea = new CodeArea();
 
@@ -48,14 +61,27 @@ public class Controller extends Application {
     }
 
     public void ejecutar(ActionEvent evt){
-
+        compilar();
     }
 
     public void compilar(){
+        txtConsola.setText("");
+        long tInicial=System.currentTimeMillis();
+
         String texto = codeArea.getText();
         String[] renglones=texto.split("\\n");
         for(int x=0;x<renglones.length;x++){
-            
+            for(int y=0;y< Configs.EXPRESIONES.length;y++){
+                Pattern patron= Pattern.compile(Configs.EXPRESIONES[y]);
+                Matcher matcher=patron.matcher(renglones[x]);
+                if(!matcher.matches()){
+                    txtConsola.setText(txtConsola.getText()+"\n"+
+                    "Errore de sitaxi en la linea "+(x+1));
+                }
+            }
         }
+        long tFinal=System.currentTimeMillis()-tInicial;
+        txtConsola.setText(txtConsola.getText()+"\n"+
+            "Compilando en : "+tFinal+" milisegundos");
     }
 }

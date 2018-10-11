@@ -82,6 +82,7 @@ public final class Configs {
     }
 
     public static String[] EXPRESIONES={
-           "[A-Za-z]{1,3}"
+           "[A-Za-z]{1,3}",
+            "[0-9]{2}"
     };
 }
