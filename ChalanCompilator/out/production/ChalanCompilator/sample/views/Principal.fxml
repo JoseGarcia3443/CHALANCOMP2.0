@@ -14,7 +14,7 @@
    <children>
       <VBox prefHeight="600.0" prefWidth="1200.0" styleClass="label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <MenuBar styleClass="menu" stylesheets="@../estilos.css">
+            <MenuBar styleClass="context-menu" stylesheets="@../estilos.css">
               <menus>
                 <Menu mnemonicParsing="false" styleClass="|" text="Archivo">
                   <items>
@@ -50,8 +50,8 @@
                      <content>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <HBox fx:id="panesote" prefHeight="450.0" prefWidth="1200.0" />
-                              <TextArea fx:id="txtConsola" prefHeight="100.0" prefWidth="1200.0" />
+                              <HBox fx:id="panesote" prefHeight="450.0" prefWidth="1200.0" styleClass="editor" />
+                              <TextArea fx:id="txtConsola" prefHeight="100.0" prefWidth="1200.0" styleClass="consola" />
                            </children>
                         </VBox>
                      </content>
