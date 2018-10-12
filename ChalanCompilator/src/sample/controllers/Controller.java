@@ -70,6 +70,8 @@ public class Controller extends Application {
 
         String texto = codeArea.getText();
         String[] renglones=texto.split("\\n");
+        boolean bandera=false;
+        
         for(int x=0;x<renglones.length;x++){
             for(int y=0;y< Configs.EXPRESIONES.length;y++){
                 Pattern patron= Pattern.compile(Configs.EXPRESIONES[y]);
