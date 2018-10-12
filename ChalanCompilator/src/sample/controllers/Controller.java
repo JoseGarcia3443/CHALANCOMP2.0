@@ -70,17 +70,23 @@ public class Controller extends Application {
 
         String texto = codeArea.getText();
         String[] renglones=texto.split("\\n");
-        boolean bandera=false;
-        
+
+
         for(int x=0;x<renglones.length;x++){
-            for(int y=0;y< Configs.EXPRESIONES.length;y++){
+            boolean bandera=false;
+            if(!renglones[x].trim().equals("")){
+                for(int y=0;y< Configs.EXPRESIONES.length && bandera==false;y++){
                 Pattern patron= Pattern.compile(Configs.EXPRESIONES[y]);
                 Matcher matcher=patron.matcher(renglones[x]);
-                if(!matcher.matches()){
-                    txtConsola.setText(txtConsola.getText()+"\n"+
-                    "Errore de sitaxi en la linea "+(x+1));
+                if(matcher.matches()){
+                    bandera=true;
                 }
-            }
+                if(bandera==false){
+                    txtConsola.setText(txtConsola.getText()+"\n"+
+                            "Errore de sitaxi en la linea "+(x+1));
+                }
+            }}
+
         }
         long tFinal=System.currentTimeMillis()-tInicial;
         txtConsola.setText(txtConsola.getText()+"\n"+
